@@ -1,0 +1,5 @@
+.background-banner{
+    background-image: url("/assets/images/banner-principal.png");
+    background-repeat: no-repeat; 
+    background-size: cover;
+  }

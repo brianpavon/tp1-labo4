@@ -1,0 +1,44 @@
+<div class="container fondo">
+    <div class="mt-4 col-sm-8 justify-content-center" style="margin-left:20%;">
+        <h2 style="color: white;">Ejercicio Uno</h2>        
+        <br>
+        <div class="row">
+            <div class="col-sm-4">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Primer Número</mat-label>
+                    <input matInput [(ngModel)]="miNumero.numeroUno" type="number">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-4">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Segundo Número</mat-label>
+                  <input matInput [(ngModel)]="miNumero.numeroDos" type="number">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Suma</mat-label>
+                    <input matInput [(ngModel)]="miNumero.suma" type="number" readonly>
+                </mat-form-field>
+            </div>            
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Promedio</mat-label>
+                    <input matInput [(ngModel)]="miNumero.promedio" type="number" readonly>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <button mat-flat-button color="primary" type="button" (click)=miNumero.calcular()>Calcular</button>
+            </div>
+            <div class="col-sm-4">
+                <button mat-flat-button color="accent" type="button" (click)=miNumero.limpiar()>Limpiar</button>                
+            </div>
+        </div>
+    </div>
+</div>
