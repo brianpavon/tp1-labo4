@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BienvenidoComponent } from './pages/bienvenido/bienvenido.component';
 import { ClaseUnoComponent } from './pages/clase-uno/clase-uno.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { QuienSoyComponent } from './pages/quien-soy/quien-soy.component';
 
-const routes: Routes = [
-  {path:'home', component:BienvenidoComponent},
-  {path:'casa', component:BienvenidoComponent},
+const routes: Routes = [  
+  {path:'home', component:HomeComponent},
+  {path:'casa', component:HomeComponent},
   {path:'ejercicio-uno',component:ClaseUnoComponent},
   {path:'login',component:LoginComponent},
   {path:'ingreso',component:LoginComponent},
+  {path:'quien-soy',component:QuienSoyComponent},
   {path:'', redirectTo:'home',pathMatch:'full'},
   {path:'**',component:ErrorComponent}
 

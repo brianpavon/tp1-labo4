@@ -10,7 +10,12 @@ import { ClaseUnoComponent } from './pages/clase-uno/clase-uno.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { BienvenidoComponent } from './pages/bienvenido/bienvenido.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { QuienSoyComponent } from './pages/quien-soy/quien-soy.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +24,18 @@ import { BienvenidoComponent } from './pages/bienvenido/bienvenido.component';
     LoginComponent,
     NavBarComponent,
     ClaseUnoComponent,
-    BienvenidoComponent
+    QuienSoyComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]
