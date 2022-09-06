@@ -9,9 +9,9 @@ export class AuthenticationService {
   toast;
 
   constructor(private auth:AngularFireAuth) { 
-    auth.authState.subscribe(user=>{
-      console.log(`Usuario logueado: ${user}`);
-    });
+    //auth.authState.subscribe(user=>{
+      //console.log(`Usuario logueado: ${user?.email}`);
+    //});
 
     this.toast= Swal.mixin({
       toast: true,

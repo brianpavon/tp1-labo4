@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UserService } from 'src/app/services/user.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { LogService } from 'src/app/services/log.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   pass:string = '';
   esNuevo:boolean = false;
 
-  constructor(private routes:Router,private auth:AuthenticationService,public usuarioLogueado:UserService,private firestore:AngularFirestore) { }
+  constructor(private routes:Router,private auth:AuthenticationService,public usuarioLogueado:UserService,private logServ:LogService) { }
 
   ngOnInit(): void {
   }
@@ -31,28 +32,17 @@ export class LoginComponent implements OnInit {
       this.redirigirHome();
       this.usuarioLogueado.email = email;
     } catch (error: any) {
-      this.auth.thrownErrorsLogin(error.code);
-      /*if(error.code == "auth/user-not-found"){
-        this.isNew = true;
-      }*/
+      this.auth.thrownErrorsLogin(error.code);      
     }
   }
   async registrar(email: string, password: string) {
     try {
       await this.auth.register(email, password);
       this.auth.authSuccess('Registro exitoso!');
-      //this.saveLog(email);
-      let date = new Date();
-      let dateString = date.toString();
-      let arrayLog = {
-        email: email,
-        fecha_ingreso: dateString
-      }
-      await this.firestore.collection('log').add(arrayLog);
+      this.logServ.guardarLog(email);      
       this.redirigirHome();
     } catch (error: any) {
-      console.log(error);
-      
+      //console.log(error);      
       this.auth.thrownErrorsRegister(error.code);      
     }
   }
@@ -61,16 +51,6 @@ export class LoginComponent implements OnInit {
     //console.log(this.mail + this.pass);
     this.mail = 'test@mail.com';
     this.pass = '654321';     
-  }
-
-  async saveLog(email:string){
-    let date = new Date();
-    let dateString = date.toString();
-    let arrayLog ={
-      email: email,
-      fecha_ingreso: dateString
-    }
-    await this.firestore.collection('log').add(arrayLog);
   }
 
 }
