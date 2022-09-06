@@ -10,13 +10,14 @@
                 <h1  class="h3 mb-3 font-weight-normal">Ingreso</h1>
             
                 <label for="inputEmail" class="sr-only">Email</label>
-                <input type="email" #inputEmail class="form-control m-2" placeholder="Email" required autofocus >
+                <input type="email" #inputEmail class="form-control m-2" placeholder="Email" required autofocus value="{{this.mail}}">
             
                 <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" #inputPassword class="form-control m-2" placeholder="Contraseña" required>
+                <input type="password" #inputPassword class="form-control m-2" placeholder="Contraseña" required value="{{this.pass}}">
             
-                <button class="btn btn-lg btn-primary btn-block m-2" type="button">Ingresar</button>
-                <label>Aún no tenes cuenta? <a routerLink="/registro">Registrarse</a></label>
+                <button class="btn btn-lg btn-primary btn-block m-2" type="button" (click)="login(inputEmail.value,inputPassword.value)">Ingresar</button>
+                <button class="btn btn-lg btn-secondary btn-block m-2" type="button" (click)="ingresoRapido()">Ingreso Rápido</button>
+                <button class="btn btn-lg btn-danger btn-block m-2" type="button" (click)="registrar(inputEmail.value,inputPassword.value)">Registrarme</button>
             </form>
         </div>
       </div>
