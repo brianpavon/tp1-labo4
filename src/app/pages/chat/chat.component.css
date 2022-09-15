@@ -1,0 +1,64 @@
+.containerChat{
+    width: 350px;
+    height: 500px;
+    position: fixed;
+    right: 0.5rem;
+    bottom: 0.5rem;
+}
+
+.chatHeader{
+    background-color: rgb(99, 16, 177);
+    color: white;
+}
+
+.imgEnviar{
+    width: 20px;
+    cursor: pointer;
+}
+
+.card-body{
+    padding: 0.6rem;
+    background-image: url('/assets/images/fondo-chat.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.propio{
+    display: block;
+    float: right;
+    background-color: rgb(5, 159, 107);
+    color: white;
+    min-width: 50.01%;
+    border-radius: 9px;
+    text-align: left;
+}
+
+.otro{
+    display: block;
+    float: left;
+    background-color: grey;
+    color: white;
+    min-width: 50.01%;
+    border-radius: 9px;
+    text-align: left;
+}
+
+.imgEnviar:active{
+    transform: scale(0.8);
+}
+
+.bubble-chat{
+    float: right;
+}
+.close{
+    color: white;
+}
+
+.msjDelChat{
+    overflow-y: scroll;    
+    padding: 0.35rem;
+}
+.msjDelChat::-webkit-scrollbar{
+    display: none;
+}

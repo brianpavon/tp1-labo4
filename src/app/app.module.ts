@@ -17,6 +17,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { QuienSoyComponent } from './pages/quien-soy/quien-soy.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AngularFireModule } from '@angular/fire/compat';
+import { ChatComponent } from './pages/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     NavBarComponent,
     ClaseUnoComponent,
     QuienSoyComponent,
-    HomeComponent
+    HomeComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
