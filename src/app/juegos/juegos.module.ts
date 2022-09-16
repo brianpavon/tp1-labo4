@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { JuegosRoutingModule } from './juegos-routing.module';
 import { AhorcadoComponent } from './pages/ahorcado/ahorcado/ahorcado.component';
-import { MenuJuegosComponent } from './pages/ahorcado/menu-juegos/menu-juegos.component';
 import { JuegosComponent } from './pages/juegos.component';
+import { MenuJuegosComponent } from './pages/menu-juegos/menu-juegos.component';
 
 
 @NgModule({
