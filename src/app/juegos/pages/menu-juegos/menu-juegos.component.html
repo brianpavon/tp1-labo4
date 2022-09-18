@@ -1,1 +1,101 @@
-<p>menu-juegos works!</p>
+<section class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+        <h1>Sala de Juegos</h1>
+        <p>
+            <a *ngIf="!gamesOn" (click)="activateGames(true)" class="btn btn-primary my-2">Mostrar Juegos</a>
+            <a *ngIf="gamesOn && userLogged" (click)="activateGames(false)" class="btn btn-primary my-2">Cerrar Juegos</a>
+            <a class="btn btn-secondary my-2" routerLink="/home">Ir a la Home</a>
+        </p>
+        <p *ngIf="gamesOn && !userLogged">Debe iniciar sesión para jugar</p>
+    </div>
+</section>
+
+
+    <div *ngIf="gamesOn && userLogged" class="container">
+        <div class="row">
+            <!---Ahorcado-->
+            <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Ahorcado</text>
+                    </svg>
+
+                    <div class="card-body">
+                        <p class="card-text">El famoso juego donde adivinas letras hasta formar la palabra.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a routerLink="/juegos/ahorcado" type="button" class="btn btn-sm btn-outline-secondary">Entrar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Mayor menor-->
+            <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                            dy=".3em">Mayor o Menor</text>
+                    </svg>
+
+                    <div class="card-body">
+                        <p class="card-text">Adiviná si el número siguiente es más grande o chico al que te tocó.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button routerLink="/juegos/mayor-menor" type="button" class="btn btn-sm btn-outline-secondary">Entrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Preguntados-->
+            <!-- <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                            dy=".3em">Preguntados</text>
+                    </svg>
+
+                    <div class="card-body">
+                        <p class="card-text">Sabes de Harry Potter? Jugá y demostralo.</p>
+                        <p class="card-text">Adiviná el Personaje.</p>                        
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button routerLink="/juegos/preguntados" type="button" class="btn btn-sm btn-outline-secondary">Entrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="col-md-3">
+                <div class="card mb-4 shadow-sm">
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                        preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                            dy=".3em">Thumbnail</text>
+                    </svg>
+
+                    <div class="card-body">
+                        <p class="card-text">Mi juego propio, un buscaminas? Puede ser.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">NO FUNCIONA</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>       -->
+        </div>
+
+
