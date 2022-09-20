@@ -1,1 +1,25 @@
-<p>ahorcado works!</p>
+<div class="d-flex justify-content-center align-items-center" style="height: 70vh;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <h1 class="text-center">Ahorcado</h1>
+        </div>
+        <div class="container-fluid" style="height: 20vh;margin-top: 10%;">            
+            <div class="row justify-content-center" >
+                {{ this.palabraCodificada }}
+            </div>
+        </div>
+        <div class="row justify-content-center d-flex">
+            <div class="col">
+                <a *ngFor="let letra of letras" class="btn btn-outline-secondary" (click)="verifyLetter(letra)">{{ letra }}</a>
+            </div>
+        </div>
+        <div class="row justify-content-center d-flex">
+            <div class="col">
+                Cantidad de intentos: <strong>{{ this.intentos }}</strong>
+            </div>
+        </div>
+        <div>
+            <a data-toggle="tooltip" data-placement="bottom" title="Volver" routerLink='/juegos'><i class="flecha-volver em em-arrow_left" aria-role="presentation" aria-label="LEFTWARDS BLACK ARROW"></i></a>
+        </div>
+    </div>
+</div>
