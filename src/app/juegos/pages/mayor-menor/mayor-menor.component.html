@@ -1,0 +1,28 @@
+<div class="container-fluid" style="height: 100vh;">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <!---Ahorcado-->        
+            <div class="col-sm-3 mt-2" >
+                <div class="card mb-2 shadow-sm">                
+                    <img src="{{urlImg}}" alt="imagen-carta">
+                    <div class="card-body">
+                        <p class="card-text text-center">La siguiente carta es mayor o menor?</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a type="button" (click)="esMayor()" mat-flat-button color="primary">Mayor</a>
+                            </div>
+                            <div class="btn-group float-right">
+                                <a mat-flat-button color="accent" type="button" (click)="esMenor()">Menor</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+                <div>
+                    <a style="cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="Volver" routerLink='/juegos'>
+                        <img src="assets/images/previous.png" alt="flecha-voler">
+                    </a>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
