@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 })
 export class AhorcadoComponent implements OnInit {
   letras:string[]=[];
+  letrasUsadas : string[]=[];
   palabras:string[] = ['PARRILLA','OTORRINOLARINGOLOGO','PASTILLA','RINOCERONTE','TRAUMATOLOGIA','FACIL','PEZ'];
   intentos:number = 0;  
   palabraRandom:string = '';
@@ -37,7 +38,11 @@ export class AhorcadoComponent implements OnInit {
   }
 
   verifyLetter(letra:string){
-    //console.log(`verifica: ${letra} palabraRandom ${this.palabraRandom}`);
+    
+    //Agrego las letras que se van usando    
+    this.letrasUsadas.push(letra);
+    //y saco las que ya se usaron
+    this.letras = this.letras.filter(item => item !== letra);
     if(this.palabraRandom.includes(letra)){
       for (let i = 0; i < this.palabraRandom.length; i++) {
         //console.log(`letra ${this.palabraRandom[i]}`);
@@ -57,7 +62,7 @@ export class AhorcadoComponent implements OnInit {
 
   loser(){
     Swal.fire({
-      title: 'Perdiste, la proxima quizas ganas',
+      title: 'Perdiste, la proxima quizas ganas. La palabra era: '+this.palabraRandom,
       icon: 'warning',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
@@ -71,7 +76,7 @@ export class AhorcadoComponent implements OnInit {
   }
   winner(){
     Swal.fire({
-      title: 'Ganaste sos re piolita',
+      title: 'Ganaste!! Genio del ahorcado!!',
       icon: 'success',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',

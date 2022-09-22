@@ -1,28 +1,37 @@
-<div class="d-flex justify-content-center align-items-center" style="height: 70vh;">
-    <div class="container">
-        <div class="row justify-content-center">
-            <h1 class="text-center">Ahorcado</h1>
-        </div>
-        <div class="container-fluid" style="height: 20vh;margin-top: 10%;">            
-            <div class="row justify-content-center" >
-                {{ this.palabraCodificada }}
+<div class="container-fluid">
+    <div class="container" style="height: 100vh;">
+
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="container">
+                <div class="row justify-content-center mt-4">
+                    <h1 class="text-center">Ahorcado</h1>
+                </div>
+                <div class="container-fluid mt-4" style="height: 20vh;">
+                    <h3 class="row justify-content-center" style="font-size: xxx-large;">
+                        {{ this.palabraCodificada }}
+                    </h3>
+                </div>
+                <div class="row justify-content-center d-flex">
+                    <!-- <div class="col-sm-4"> -->
+                        <a id="{{ letra }}" *ngFor="let letra of letras" mat-flat-button color="primary" (click)="verifyLetter(letra)">{{ letra }}</a>
+                    <!-- </div> -->
+                </div>
+                <div class="row justify-content-center d-flex mt-2">                    
+                    <p style="font-size:large;"> Cantidad de intentos: <strong>{{ this.intentos }}</strong></p>
+                </div>
+                <div *ngIf="letrasUsadas.length > 0">
+                    <p style="font-size:medium;" class="text-center">Estas letras ya usaste</p>
+                    <div class="row justify-content-center d-flex mt-4" *ngIf="letrasUsadas.length > 0">
+                        <a *ngFor="let letra of letrasUsadas" mat-flat-button color="accent">{{ letra }}</a>                    
+                    </div>
+                </div>
+                <div>
+                    <a data-toggle="tooltip" data-placement="bottom" title="Volver" routerLink='/juegos'>
+                        <img src="assets/images/previous.png" alt="flecha-volver">
+                    </a>
+                </div>
+                
             </div>
         </div>
-        <div class="row justify-content-center d-flex">
-            <div class="col">
-                <a *ngFor="let letra of letras" class="btn btn-outline-secondary" (click)="verifyLetter(letra)">{{ letra }}</a>
-            </div>
-        </div>
-        <div class="row justify-content-center d-flex">
-            <div class="col">
-                Cantidad de intentos: <strong>{{ this.intentos }}</strong>
-            </div>
-        </div>
-        <div>
-            <a data-toggle="tooltip" data-placement="bottom" title="Volver" routerLink='/juegos'>
-                <img src="assets/images/previous.png" alt="flecha-volver">
-            </a>
-        </div>
-        
     </div>
 </div>
