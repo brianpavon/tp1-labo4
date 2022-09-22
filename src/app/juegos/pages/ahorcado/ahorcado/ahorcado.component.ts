@@ -16,13 +16,20 @@ export class AhorcadoComponent implements OnInit {
   palabraCodificada:string='';
   cantLetras:number = 0;
   constructor() { 
-    this.letras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+    //this.letras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   }
 
   ngOnInit(): void {
     this.cargarJuego();
   }
+
+  cargarLetras(){
+    this.letras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+    this.letrasUsadas = [];
+  }
+
   cargarJuego(){
+    this.cargarLetras();
     this.intentos = 6;
     const quePalabra = Math.floor(Math.random() * (this.palabras.length -1));
     //console.log(quePalabra);
@@ -62,7 +69,7 @@ export class AhorcadoComponent implements OnInit {
 
   loser(){
     Swal.fire({
-      title: 'Perdiste, la proxima quizas ganas. La palabra era: '+this.palabraRandom,
+      title: 'Perdiste, la próxima quizás ganas. La palabra era: '+this.palabraRandom,
       icon: 'warning',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
@@ -76,7 +83,7 @@ export class AhorcadoComponent implements OnInit {
   }
   winner(){
     Swal.fire({
-      title: 'Ganaste!! Genio del ahorcado!!',
+      title: 'Ganaste!! Crack del ahorcado!!',
       icon: 'success',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
