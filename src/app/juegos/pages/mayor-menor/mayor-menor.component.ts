@@ -42,7 +42,10 @@ export class MayorMenorComponent implements OnInit {
     //console.log(this.tipoCarta[Math.floor(Math.random() * 2)+1]);
     this.numeroRandom = this.proximoNumero;
     this.urlImg = `https://deckofcardsapi.com/static/img/${this.numeroRandom}${this.devolverLetra()}.png`;
-    Swal.fire(`Ganaste!! El próximo era ${this.proximoNumero}`);
+    Swal.fire({
+      title:`Ganaste!! El próximo era ${this.proximoNumero}`,
+      icon:'success'
+    });
   }
   
   perdiste(){
@@ -50,7 +53,10 @@ export class MayorMenorComponent implements OnInit {
     //console.log(this.tipoCarta[Math.floor(Math.random() * 2)+1]);
     this.numeroRandom = this.proximoNumero;
     this.urlImg = `https://deckofcardsapi.com/static/img/${this.numeroRandom}${this.devolverLetra()}.png`;
-    Swal.fire(`Perdiste!! El próximo era ${this.proximoNumero}`);
+    Swal.fire({
+      title:`Perdiste!! El próximo era ${this.proximoNumero}`,
+      icon:'warning'
+    });
   }
 
   devolverNumeroRandom(min:number,max:number) {
