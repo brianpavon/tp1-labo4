@@ -1,0 +1,36 @@
+
+.body{
+    background-image: url('https://media.giphy.com/media/13eD01wPr7iiTC/giphy.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    height: 100vh;
+    overflow: hidden !important;
+}
+
+.list-group-item{
+    background-color: black;
+    color: white;
+}
+
+.list-group-item:hover{
+    background-color: #15A2DF;
+    color: black;
+}
+
+.foto{
+    max-width: 300px;
+    max-height: 300px;
+}
+
+a{
+    cursor: pointer;
+}
+
+.titulo{
+    background-color: black;
+    color: gray;
+    font-size: large;
+}
