@@ -1,3 +1,10 @@
+.mostrar{
+    display: block;
+}
+.oculto{
+    display: none;
+}
+
 :host ::ng-deep .columna {
     color: black;
     text-align: center;
@@ -7,7 +14,7 @@
     font-weight: bold;
     size: 5em;
     border:1px solid antiquewhite;
-    cursor: pointer;
+    cursor: pointer;    
 }
 :host ::ng-deep .columna:hover{
     transform: scale(0.9);
@@ -19,7 +26,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-    height: 80vh;
+    height: 70vh;
 }
 
 .botonera {
