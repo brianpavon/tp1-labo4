@@ -8,6 +8,8 @@ import { MenuJuegosComponent } from './pages/menu-juegos/menu-juegos.component';
 import { MayorMenorComponent } from './pages/mayor-menor/mayor-menor.component';
 import { MaterialModule } from '../material/material.module';
 import { PreguntadosComponent } from './pages/preguntados/preguntados.component';
+import { BuscaminasComponent } from './pages/buscaminas/buscaminas.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,12 +18,14 @@ import { PreguntadosComponent } from './pages/preguntados/preguntados.component'
     MenuJuegosComponent,
     JuegosComponent,
     MayorMenorComponent,
-    PreguntadosComponent
+    PreguntadosComponent,
+    BuscaminasComponent,
   ],
   imports: [
     CommonModule,
     JuegosRoutingModule,
-    MaterialModule
+    MaterialModule,    
+    FormsModule,
   ]
 })
 export class JuegosModule { }

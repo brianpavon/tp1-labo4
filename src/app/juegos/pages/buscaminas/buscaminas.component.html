@@ -1,0 +1,48 @@
+<div class="container-fluid" style="height: 80vh;">
+    <div style="text-align:center;">
+        <span>Buscaminas</span>
+    </div>
+    <button class="btnInicio" #btnIniciar (click)="MostrarConfiguracion()">Iniciar Juego</button>
+
+    <div class="contenido" #contenido>
+           
+    </div>
+
+    <div class="configuracion" #configuracion style="visibility:hidden">
+        <h1>Elegí el nivel de dificultad</h1>
+        <hr>
+        <div class="row d-flex justify-content-around">
+            <button (click)="StartGameEvent(0)" mat-flat-button color="primary">Fácil</button>
+            <button (click)="StartGameEvent(1)" mat-flat-button color="accent">Medio</button>
+            <button (click)="StartGameEvent(2)" mat-flat-button color="warn">Díficil</button>
+        </div>
+        <div class="row d-flex justify-content-around mt-4">
+            <div class="col-sm-2">
+                <p class="text-center" style="font-size: x-large;">5 <i class="em em-bomb" aria-role="presentation" aria-label="BOMB"></i></p>
+            </div>
+            <div class="col-sm-2">
+                <p class="text-center" style="font-size: x-large;">15 <i class="em em-bomb" aria-role="presentation" aria-label="BOMB"></i></p>
+            </div>
+            <div class="col-sm-2">
+                <p class="text-center" style="font-size: x-large;">40 <i class="em em-bomb" aria-role="presentation" aria-label="BOMB"></i></p>
+            </div>
+        </div>
+        <!-- <button (click)="StartGameEvent(0)" style="margin:10px; color:white; background-color: green" class="mdl-button  mdl-button--raised">FACIL</button>
+        <button (click)="StartGameEvent(1)" style="margin:10px; color:white; background-color: orange" class="mdl-button  mdl-button--raised">NORMAL</button>
+        <button (click)="StartGameEvent(2)" style="margin:10px; color:white; background-color: red" class="mdl-button  mdl-button--raised">DIFICIL</button>
+        <button style="margin:10px" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"><i class="material-icons">close</i>
+            Cancelar</button> -->
+    </div>
+    <div style="float: left;">
+        <a style="cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="Volver" routerLink='/juegos'>
+            <img src="assets/images/previous.png" alt="flecha-voler">
+        </a>
+    </div> 
+
+    <!-- <div #botonera class="botonera" style="visibility:hidden">
+        <h4 style="float: left; margin-left: 20px">Jugador: <b>{{ namePlayer }}</b></h4>
+        <h4 id="puntuacion" style="display: inline-block;">Puntuación: <b>{{ scorePlayer }}</b></h4>
+        <h4 style="float: right; margin-right: 20px">Tiempo: <b>{{ timePlayer }}</b></h4>
+    </div> -->
+</div>
+      
