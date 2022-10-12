@@ -1,0 +1,89 @@
+<div class="body">
+    <form  class="regForm mt-3" [formGroup]="formEncuesta" (ngSubmit)="enviarEncuesta()">
+
+        <img class="mx-auto d-block" src="assets/images/encuesta.png" alt="" width="72" height="72">
+        <label style="color: whitesmoke;">Completá los siguientes campos</label>
+        <div class="d-flex flex-column">
+            <div class="invalid">
+               <p *ngIf="formEncuesta.controls.nombre.errors?.required && formEncuesta.controls.nombre.touched">Debe completar el nombre y apellido.</p>
+               <p *ngIf="formEncuesta.controls.nombre.errors?.['minlength']">Debe tener al menos 5 caracteres.</p>
+               <p *ngIf="formEncuesta.controls.nombre.errors?.['pattern']">Solo se aceptan letras.</p>
+            </div>
+            <mat-form-field appearance="fill"  class="text-center">
+                <mat-label>Nombre y Apellido</mat-label>
+                <input matInput formControlName="nombre" class="letrasBlancas">
+            </mat-form-field>            
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="invalid">
+                    <p *ngIf="formEncuesta.controls.edad.errors?.required && formEncuesta.controls.edad.touched">Debe completar la edad.</p>
+                    <p *ngIf="formEncuesta.controls.edad.errors?.['min']">La edad mínima es 18 años.</p>
+                    <p *ngIf="formEncuesta.controls.edad.errors?.['max']">La edad máxima es 99 años.</p>
+                    <p *ngIf="formEncuesta.controls.edad.errors?.['pattern']">La edad son números.</p>
+                </div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Edad</mat-label>
+                    <input matInput type="number" formControlName="edad" class="letrasBlancas">
+                </mat-form-field>
+            </div>                    
+            <div class="col-md-6">
+                <div class="invalid">
+                    <p *ngIf="formEncuesta.controls.telefono.errors?.required && formEncuesta.controls.telefono.touched">Debe completar el teléfono.</p>                    
+                    <p *ngIf="formEncuesta.controls.telefono.errors?.['maxlength']">Máximo 10 caracteres.</p>
+                    <p *ngIf="formEncuesta.controls.telefono.errors?.['pattern']">Solo números.</p>
+                </div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Telefono</mat-label>
+                    <input matInput type="number" formControlName="telefono" class="letrasBlancas">
+                </mat-form-field>
+            </div>
+        </div>
+        
+        <hr>
+
+        <div class="d-flex flex-column">
+            <div class="invalid" *ngIf="formEncuesta.controls.rta1.errors?.required && formEncuesta.controls.rta1.touched">
+                Debe seleccionar una opción.
+            </div>
+            <mat-form-field appearance="fill" class="text-center">                        
+                <mat-label>Tu puntaje de la sala de juegos</mat-label>
+                <mat-select formControlName="rta1">
+                    <mat-option value="muyBueno">Muy bueno</mat-option>
+                    <mat-option value="bueno">Bueno</mat-option>
+                    <mat-option value="regular">Regular</mat-option>
+                    <mat-option value="malisimo">Malísimo</mat-option>                    
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <hr>
+
+        <div class="d-flex flex-column letrasBlancas">
+                <div class="invalid" *ngIf="formEncuesta.controls.rta2.errors?.required && formEncuesta.controls.rta2.touched">
+                    Debe seleccionar una opción.
+                </div>        
+                <label id="example-radio-group-label">Elegí tu juego Favorito</label>
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="rta2">
+                <mat-radio-button class="d-flex flex-column" *ngFor="let juego of juegos" [value]="juego">
+                    {{juego}}
+                </mat-radio-button>
+                </mat-radio-group>
+        </div>
+        <hr>
+
+        <div class="d-flex flex-column">
+            <div class="invalid">
+                <p *ngIf="formEncuesta.controls.rta3.errors?.required && formEncuesta.controls.rta3.touched">Por favor, deje una reseña.</p>                
+                <p *ngIf="formEncuesta.controls.rta3.errors?.['minlength']">Debe tener al menos 5 caracteres.</p>
+            </div>   
+            <mat-label class="mb-2 letrasBlancas" style="font-size: large;">Dejá tu opinión sobre la sala de juegos</mat-label>
+            <mat-form-field class="example-full-width" appearance="fill">            
+                <textarea class="letrasBlancas" matInput formControlName="rta3"></textarea>
+            </mat-form-field>
+        </div>
+        <hr>
+
+        <button type="submit" class="btn btn-block" mat-flat-button color="primary">Enviar Encuesta</button>
+    </form>
+</div>

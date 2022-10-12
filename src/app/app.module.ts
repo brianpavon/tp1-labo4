@@ -7,7 +7,7 @@ import { ErrorComponent } from './pages/error/error.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NavBarComponent } from './pages/nav-bar/nav-bar.component';
 import { ClaseUnoComponent } from './pages/clase-uno/clase-uno.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -19,6 +19,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { ChatComponent } from './pages/chat/chat.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EncuestaComponent } from './pages/encuesta/encuesta.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     ClaseUnoComponent,
     QuienSoyComponent,
     HomeComponent,
-    ChatComponent
+    ChatComponent,
+    EncuestaComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase),
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

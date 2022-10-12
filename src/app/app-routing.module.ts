@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { JuegosModule } from './juegos/juegos.module';
 import { ClaseUnoComponent } from './pages/clase-uno/clase-uno.component';
+import { EncuestaComponent } from './pages/encuesta/encuesta.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'juegos',
     loadChildren:()=>import('./juegos/juegos.module').then(m=>JuegosModule)
   },
+  {path:'encuesta',component:EncuestaComponent},
   {path:'', redirectTo:'home',pathMatch:'full'},
   {path:'**',component:ErrorComponent}
 

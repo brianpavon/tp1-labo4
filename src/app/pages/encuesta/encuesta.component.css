@@ -1,0 +1,32 @@
+.body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color:rgb(0, 0, 0);
+    width: 100vw;
+}
+
+.col3{
+    width: 100%;    
+}
+
+.regForm{
+    max-width: 65vh;
+}
+
+.radio{
+    background-color: blueviolet !important;
+}
+
+hr{
+    background-color: whitesmoke;
+}
+
+.invalid{
+    color: red;
+}
+
+.letrasBlancas{
+    color: white;
+}
