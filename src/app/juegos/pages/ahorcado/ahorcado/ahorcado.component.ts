@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Resultados } from 'src/app/interfaces/resultados';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ResultadosService } from 'src/app/services/resultados.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,8 +18,18 @@ export class AhorcadoComponent implements OnInit {
   palabraElegida:string[]=[];
   palabraCodificada:string='';
   cantLetras:number = 0;
-  constructor() { 
-    //this.letras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+  aciertos : number = 0;
+  vecesJugadas : number = 0;
+  usuario : any;
+  resultadoJuego !: Resultados;
+  constructor(private resServ : ResultadosService,private auth : AuthenticationService) {
+    this.auth.obtenerUsuarioLogueado().subscribe(
+      user=>{
+        //console.log(user);
+        this.usuario = user;
+      }
+    )
+    
   }
 
   ngOnInit(): void {
@@ -29,6 +42,7 @@ export class AhorcadoComponent implements OnInit {
   }
 
   cargarJuego(){
+    
     this.cargarLetras();
     this.intentos = 6;
     const quePalabra = Math.floor(Math.random() * (this.palabras.length -1));
@@ -68,13 +82,21 @@ export class AhorcadoComponent implements OnInit {
   }
 
   loser(){
+    this.vecesJugadas++;
     Swal.fire({
-      title: 'Perdiste, la próxima quizás ganas. La palabra era: '+this.palabraRandom,
+      title: 'Perdiste, la próxima quizás ganas. La palabra era: '+this.palabraRandom+'.\nQuerés seguir jugando?',
       icon: 'warning',
       confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Si',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Aceptar',
-    });
+      showCancelButton: true,
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (!result.isConfirmed) {
+        //console.log("mandar resultados");
+        this.guardarResultados();
+      }
+    })
     this.palabraRandom = '';
     this.palabraElegida=[];
     this.palabraCodificada='';    
@@ -82,12 +104,21 @@ export class AhorcadoComponent implements OnInit {
     this.cargarJuego();
   }
   winner(){
+    this.vecesJugadas++;
+    this.aciertos++;
     Swal.fire({
-      title: 'Ganaste!! Crack del ahorcado!!',
+      title: 'Ganaste!! Crack del ahorcado!!\nQuerés seguir jugando?',
       icon: 'success',
       confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Aceptar'      
+      confirmButtonText: 'Si',
+      cancelButtonColor: '#d33',      
+      showCancelButton: true,
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (!result.isConfirmed) {
+        //console.log("mandar resultados");
+        this.guardarResultados();
+      }
     });
     this.palabraRandom = '';
     this.palabraElegida=[];
@@ -96,5 +127,20 @@ export class AhorcadoComponent implements OnInit {
     this.cargarJuego();
   }
 
-
+  guardarResultados(){
+    //console.log(`aciertos ${this.aciertos} intentos ${this.vecesJugadas}`);
+    let date = new Date();
+    let dateString = date.toString();
+    this.resultadoJuego = {
+      uid: this.usuario.uid,
+      mail: this.usuario.email,
+      fecha: dateString,
+      juego: 'Ahorcado',
+      aciertos: this.aciertos,
+      intentos: this.vecesJugadas
+    }
+    //console.log(this.resultadoJuego);
+    this.resServ.guardarResultado(this.resultadoJuego);
+  }
+  
 }

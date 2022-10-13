@@ -1,10 +1,17 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Resultados } from 'src/app/interfaces/resultados';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ResultadosService } from 'src/app/services/resultados.service';
 import Swal from 'sweetalert2';
 
 
 let arrayPiezzasGlobal :any;
 let numPiezasDescubiertas : number = 0;
-
+let intentos : number = 0;
+let aciertos : number = 0;
+let resultadoJuego !: Resultados
+let usuario : any;
+let resServ !: ResultadosService
 @Component({
   selector: 'app-buscaminas',
   templateUrl: './buscaminas.component.html',
@@ -14,6 +21,15 @@ export class BuscaminasComponent {
       dificultadPlayer = 0;
       contenido: String = "";
       arrayPiezas = [];
+
+      constructor(private auth : AuthenticationService,private rServ : ResultadosService){
+        this.auth.obtenerUsuarioLogueado().subscribe(
+          user=>{
+            usuario = user;
+          }
+        )
+        resServ = rServ;
+      }
 
       // Link
       @ViewChild('contenido') contenedor!: ElementRef;
@@ -230,15 +246,25 @@ export class BuscaminasComponent {
 
 function ganaste(){
   numPiezasDescubiertas = 0
-  
+  intentos++;
+  aciertos++;
   Swal.fire({
       position: 'center',
-      title: 'Ganaste!!',
+      title: 'Ganaste!!\nQuerés seguir jugando?',
       imageUrl: 'assets/images/happy.png',
       imageWidth: 200,
       imageHeight: 200,
-      imageAlt: 'Custom image',      
-  });
+      imageAlt: 'Custom image',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Si',
+      cancelButtonColor: '#d33',      
+      showCancelButton: true,
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (!result.isConfirmed) {        
+        guardarResultados();
+      }
+    });
     //@ts-ignore    
   document.getElementById('reset').style.visibility = "visible";
   
@@ -246,20 +272,29 @@ function ganaste(){
 
 function perdiste(){
   numPiezasDescubiertas = 0
+  intentos++;
   setTimeout(() => {    
     Swal.fire({
       position: 'center',
-      title: 'Perdiste!',      
+      title: 'Perdiste!\nQuerés seguir jugando?',      
       imageUrl: 'assets/images/dead.png',
       imageWidth: 200,
       imageHeight: 200,
       imageAlt: 'Custom image',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Si',
+      cancelButtonColor: '#d33',      
+      showCancelButton: true,
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (!result.isConfirmed) {        
+        guardarResultados();
+      }
     });
+    
     //@ts-ignore    
     document.getElementById('reset').style.visibility = "visible";
   }, 2200);
-    
-  
 }
 
 /**
@@ -321,6 +356,22 @@ function ControladorCelda(this:any) {
 	// Quitamos propiedad click
 	this.removeEventListener("click", ControladorCelda);
 	this.removeEventListener("contextmenu", ControladorCelda);
+}
+
+function guardarResultados(){
+  //console.log(usuario);
+  
+  let date = new Date();
+  let dateString = date.toString();
+  resultadoJuego = {
+    uid: usuario.uid,
+    mail: usuario.email,
+    fecha: dateString,
+    juego: 'Buscaminas',
+    aciertos: aciertos,
+    intentos: intentos
+  }    
+  resServ.guardarResultado(resultadoJuego);
 }
 
 
